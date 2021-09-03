@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"noUnusedLocals": true,
+		"noImplicitAny": true,
+		"declaration": true,
+		"target": "ES2020",
+		"module": "es2015",
+		"strict": true,
+		"allowJs": true,
+		"lib": ["ES2018"],
+		"sourceMap": true,
+		"resolveJsonModule": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+}

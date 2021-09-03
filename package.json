@@ -1,0 +1,34 @@
+{
+  "name": "@vajra/pg-aws-lambda",
+  "version": "0.0.1",
+  "description": "Wrapper around node-pg to manage connections",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no Test yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prakattuladhar/pg-aws-lambda.git"
+  },
+  "keywords": [
+    "pg",
+    "aws-lambda",
+    "postgres"
+  ],
+  "author": "Prakat Tuladhar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prakattuladhar/pg-aws-lambda/issues"
+  },
+  "homepage": "https://github.com/prakattuladhar/pg-aws-lambda#readme",
+  "peerDependencies": {
+    "aws-sdk": "^2.982.0",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/pg": "^8.6.1",
+    "aws-sdk": "^2.982.0",
+    "pg": "^8.7.1"
+  }
+}
