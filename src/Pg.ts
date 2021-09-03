@@ -1,8 +1,8 @@
 import { Pool as DbPool } from "pg";
-import { RDS } from "aws-sdk";
+import {  RDS } from "aws-sdk";
 import type { Pool } from "pg";
 import type { Config } from "./types/Config";
-const { REGION, PGHOST, PGPORT, PGUSER } = process.env;
+const { REGION, PGHOST, PGPORT, PGUSER, PGPASSWORD } = process.env;
 const DBPOOL_MAXAGE = process.env["DBPOOL_MAXAGE"] || 30000;
 const WAIT_TIME = 50;
 const log = (x: any) => {
@@ -17,11 +17,12 @@ class Pg {
     idleTimeoutMillis: 120000,
     connectionTimeoutMillis: 10000,
     port: 5432,
+    region: "us-east-1",
   };
   private _pool: Pool | undefined = undefined;
   private _poolStartTime: number = 0;
   constructor(config: Config = {}) {
-    this._config.password = this.getRdsPassword();
+    this._config.password = PGPASSWORD || this.getRdsPassword();
     this._config = { ...this._config, ...config };
   }
   private async initPool() {
@@ -63,12 +64,10 @@ class Pg {
   }
   public setConfig(configObj: Config = {}) {
     try {
-      this._config.password = this.getRdsPassword();
       this._config = { ...this._config, ...configObj };
       //   if not called before making connection, it will not close connection.
       this._pool = undefined;
       this.initPool();
-      return true;
     } catch (e) {
       console.log(e);
     }
@@ -98,10 +97,17 @@ class Pg {
         .then((client) => {
           log("client connected to pool.");
           const response = client.query(sql, valueFiled);
-          return response.then((data) => {
-            client.release();
-            return Promise.resolve(data);
-          });
+          return response
+            .then((data) => {
+              return Promise.resolve(data);
+            })
+            .catch((queryError) => {
+              console.log(queryError);
+            })
+            .finally(() => {
+              log("release client");
+              client.release();
+            });
           // await pool.end();
           // pool = undefined;
         })

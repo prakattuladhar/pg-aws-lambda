@@ -1,10 +1,15 @@
 {
-  "name": "@vajra/pg-aws-lambda",
+  "name": "@prakat/pg-aws-lambda",
   "version": "0.0.1",
   "description": "Wrapper around node-pg to manage connections",
-  "main": "index.js",
+  "main": "dist/ndex.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"no Test yet\""
+    "test": "echo \"no Test yet\"",
+    "build": "rimraf ./dist && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -26,12 +31,21 @@
     "pg": "^8.7.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.4",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-typescript": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@types/aws-sdk": "^2.7.0",
     "@types/pg": "^8.6.1",
     "aws-sdk": "^2.982.0",
     "builtin-modules": "^3.2.0",
     "pg": "^8.7.1",
-    "rollup": "^2.56.3"
+    "rimraf": "^3.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.2"
   }
 }
