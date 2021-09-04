@@ -50,7 +50,7 @@ exports.handler = async (event) => {
   await query("Select NOW()");
 };
 
-// pararell calls
+// parallel calls
 await Promise.all([
   await query("Select NOW()"),
   await query("Select NOW()"),
