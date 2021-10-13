@@ -24,7 +24,7 @@ e.g.
 PGHOST = "localhost"
 PGUSER = "postgres"
 PGDATABASE = "postgres"
-PGPASSWORD = "postgres" # leave this out for
+PGPASSWORD = "postgres" # leave this out for RDS
 PGPORT = 5432
 PG_DEBUG = "true" #to turn on the debug
 REGION=us-east-1
@@ -52,9 +52,9 @@ exports.handler = async (event) => {
 
 // parallel calls
 await Promise.all([
-  await query("Select NOW()"),
-  await query("Select NOW()"),
-  await query("Select NOW()"),
+   query("Select NOW()"),
+   query("Select NOW()"),
+   query("Select NOW()"),
 ]);
 ```
 
