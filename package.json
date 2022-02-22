@@ -1,8 +1,8 @@
 {
   "name": "@prakat/pg-aws-lambda",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrapper around node-pg to manage connections",
-  "main": "dist/ndex.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
